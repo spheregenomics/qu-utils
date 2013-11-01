@@ -3,6 +3,24 @@ require "qu/utils/version"
 
 module Qu
   module Utils
+    IUPAC = {
+      A: ['A'],
+      T: ['T'],
+      C: ['C'],
+      G: ['G'],
+      R: ['G', 'A'],
+      Y: ['T', 'C'],
+      S: ['G', 'C'],
+      W: ['T', 'A'],
+      K: ['G', 'T'],
+      M: ['A', 'C'],
+      D: ['G', 'T', 'A'],
+      H: ['T', 'A', 'C'],
+      B: ['G', 'T', 'C'],
+      V: ['G', 'A', 'C'],
+      N: ['G', 'A', 'T', 'C'],
+      I: ['G', 'A', 'T', 'C'],
+    }
     module_function
     # File actionpack/lib/action_view/helpers/text_helper.rb, line 215
     def word_wrap(text, line_width = 80)
