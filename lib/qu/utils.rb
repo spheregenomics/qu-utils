@@ -3,6 +3,7 @@ require "qu/utils/version"
 
 module Qu
   module Utils
+    module_function
     # File actionpack/lib/action_view/helpers/text_helper.rb, line 215
     def word_wrap(text, line_width = 80)
       text.split("\n").collect do |line|
