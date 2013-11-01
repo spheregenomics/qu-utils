@@ -29,7 +29,7 @@ module Qu
       count > 1 ? word + 's' : word
     end
 
-    def os
+    def platform_os
       case RUBY_PLATFORM
       when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
         return 'windows'
@@ -44,7 +44,9 @@ module Qu
       end
     end
 
-    def bit
+    alias os platform_os
+
+    def platform_bit
       case RUBY_PLATFORM
       when /64/
         return 64
@@ -55,6 +57,8 @@ module Qu
       end
 
     end
+
+    alias bit platform_bit
   end
 end
 
