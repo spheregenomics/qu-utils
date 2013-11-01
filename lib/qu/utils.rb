@@ -44,8 +44,6 @@ module Qu
       end
     end
 
-    alias os platform_os
-
     def platform_bit
       case RUBY_PLATFORM
       when /64/
@@ -55,10 +53,7 @@ module Qu
       else
         raise Error::WebDriverError, "Unknown os bit: #{RUBY_PLATFORM.inspect}"
       end
-
     end
-
-    alias bit platform_bit
   end
 end
 
