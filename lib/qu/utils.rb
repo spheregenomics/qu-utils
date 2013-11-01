@@ -29,6 +29,13 @@ module Qu
       end * "\n"
     end
 
+    def wrap_long_seq(word, length=80, separator="\n")
+      # Wrap a long sentence with may words into multiple lines
+      (word.length < length) ?
+        word :
+        word.scan(/.{1,#{length}}/).join(separator)
+    end
+
     def seconds_to_units(seconds)
       return "#{seconds.round(2)} second" if seconds < 1
       return "#{seconds.round(2)} seconds" if seconds < 60
