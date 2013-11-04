@@ -61,7 +61,7 @@ module Qu
 
       return primer_list
     end
-    
+
     # File actionpack/lib/action_view/helpers/text_helper.rb, line 215
     def word_wrap(text, line_width = 80)
       text.split("\n").collect do |line|
@@ -69,7 +69,7 @@ module Qu
       end * "\n"
     end
 
-    def wrap_long_seq(word, length=80, separator="\n")
+    def long_seq_wrap(word, length=80, separator="\n")
       # Wrap a long sentence with may words into multiple lines
       (word.length < length) ?
         word :
