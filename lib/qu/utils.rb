@@ -22,6 +22,46 @@ module Qu
       I: ['G', 'A', 'T', 'C'],
     }
     module_function
+
+    def iupac2normal(seq, prefixes = [''])
+      return prefixes if seq.size == 0
+
+      first = seq[0].to_sym
+      last_seq = seq[1..-1]
+      new_prefixes = []
+      prefixes.each do |prefix|
+        if IUPAC.include?(first)
+          IUPAC[first].each {|base| new_prefixes << "#{prefix}#{base}"}
+        else
+          $stderr.puts "Error: unrecognized base: #{first}"
+          exit
+        end
+      end
+      return iupac2normal(last_seq, prefixes = new_prefixes)
+    end
+
+    def convert_degenerate_primer(primer_file)
+      primer_records = Bio::FlatFile.new(Bio::FastaFormat, File.open(primer_file))
+
+      primer_list = []
+      primer_records.each do |primer|
+        if primer.naseq.to_s =~ /[^atcgATCG]+/
+          normal_seq_list = iupac2normal(primer.naseq.upcase)
+          fasta_io = StringIO.new
+          normal_seq_list.each_with_index do |normal_seq, index|
+            fasta_io << ">#{primer.entry_name}_#{index+1} #{primer.description}\n#{normal_seq}\n"
+          end
+          fasta_io.rewind
+          primer_list += Bio::FlatFile.new(Bio::FastaFormat, fasta_io).to_a
+          fasta_io.close
+        else
+          primer_list << primer
+        end
+      end
+
+      return primer_list
+    end
+    
     # File actionpack/lib/action_view/helpers/text_helper.rb, line 215
     def word_wrap(text, line_width = 80)
       text.split("\n").collect do |line|
