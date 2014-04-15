@@ -1,6 +1,6 @@
 # Qu::Utils
 
-TODO: Write a gem description
+Utils: useful class or methods used in qu-* projects.
 
 ## Installation
 
@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'qu/utils'
+
+Qu::Utils::long_seq_wrap(long_seq)
+```
 
 ## Contributing
 
