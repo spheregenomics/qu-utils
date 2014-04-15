@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["quwubin@gmail.com"]
   spec.description   = %q{Some useful class or methods}
   spec.summary       = %q{Utils by Wubin Qu}
-  spec.homepage      = "http://quwubin.cn"
+  spec.homepage      = "https://github.com/quwubin/qu-utils"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
