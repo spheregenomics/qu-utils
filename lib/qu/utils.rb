@@ -1,5 +1,6 @@
 require 'bio'
 require 'optparse'
+require 'os'
 require "qu/utils/version"
 
 module Qu
@@ -97,29 +98,19 @@ module Qu
     end
 
     def platform_os
-      case RUBY_PLATFORM
-      when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
+      if OS.windows?
         return 'windows'
-      when /darwin|mac/
+      elsif OS.mac?
         return 'mac'
-      when /linux/
+      elsif OS.linux?
         return 'linux'
-      when /solaris|bsd/
-        return 'unix'
       else
-        raise Error::WebDriverError, "Unknown os: #{RUBY_PLATFORM.inspect}"
+        return 'unknown'
       end
     end
 
     def platform_bit
-      case RUBY_PLATFORM
-      when /64/
-        return 64
-      when /32/
-        return 32
-      else
-        raise Error::WebDriverError, "Unknown os bit: #{RUBY_PLATFORM.inspect}"
-      end
+      OS.bits
     end
   end
 end

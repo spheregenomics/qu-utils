@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Qu::Utils::VERSION
   spec.authors       = ["Wubin Qu"]
   spec.email         = ["quwubin@gmail.com"]
-  spec.description   = %q{Some useful class or methods}
+  spec.description   = %q{Useful class or methods used in qu-* projects.}
   spec.summary       = %q{Utils by Wubin Qu}
   spec.homepage      = "https://github.com/quwubin/qu-utils"
   spec.license       = "MIT"
@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'bio', '>= 1.4'
+  spec.add_runtime_dependency 'os', '~> 0.9.6'
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
